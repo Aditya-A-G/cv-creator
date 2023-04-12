@@ -35,7 +35,7 @@ export class Education extends Component {
           variant="outlined"
           fullWidth={true}
           placeholder="University Name"
-          value={!this.state.university ? university : this.state.university}
+          value={!university ? this.state.university : university}
           inputProps={{ name: "university", onChange: this.onChange }}
           margin="normal"
         />
@@ -43,7 +43,7 @@ export class Education extends Component {
           variant="outlined"
           fullWidth={true}
           placeholder="City"
-          value={!this.state.city ? city : this.state.city}
+          value={!city ? this.state.city : city}
           inputProps={{ name: "city", onChange: this.onChange }}
           margin="normal"
         />
@@ -51,7 +51,7 @@ export class Education extends Component {
           variant="outlined"
           fullWidth={true}
           placeholder="Degree"
-          value={this.state.degree ? degree : this.state.degree}
+          value={!degree ? this.state.degree : degree}
           inputProps={{ name: "degree", onChange: this.onChange }}
           margin="normal"
         />
@@ -60,7 +60,7 @@ export class Education extends Component {
           variant="outlined"
           fullWidth={true}
           placeholder="Subject"
-          value={this.state.subject ? subject : this.state.subject}
+          value={!subject ? this.state.subject : subject}
           inputProps={{ name: "subject", onChange: this.onChange }}
           margin="normal"
         />
@@ -69,7 +69,7 @@ export class Education extends Component {
           variant="outlined"
           fullWidth={true}
           placeholder="From"
-          value={this.state.from ? from : this.state.from}
+          value={!from ? this.state.from : from}
           inputProps={{ name: "from", onChange: this.onChange }}
           margin="normal"
         />
@@ -77,7 +77,7 @@ export class Education extends Component {
           variant="outlined"
           fullWidth={true}
           placeholder="To"
-          value={this.state.to ? to : this.state.to}
+          value={!to ? this.state.to : to}
           inputProps={{ name: "to", onChange: this.onChange }}
           margin="normal"
         />

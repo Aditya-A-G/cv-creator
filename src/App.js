@@ -6,6 +6,8 @@ import Education from "./components/Education";
 import { Typography } from "@mui/material";
 import "./App.css";
 import ResumeHeader from "./components/ResumeHeader";
+import ResumeDetails from "./components/ResumeDetails";
+import ResumePersonalDetails from "./components/ResumePersonalDetails";
 
 class App extends Component {
   constructor() {
@@ -43,8 +45,9 @@ class App extends Component {
 
   addEducation = (state) => {
     this.setState({
-      experience: [...this.state.education, state],
+      education: [...this.state.education, state],
     });
+    console.log(this.state.education);
   };
 
   deleteEducation = (index) => {
@@ -75,6 +78,10 @@ class App extends Component {
         </div>
         <div className="resumeContainer">
           <ResumeHeader firstName= {"test"} lastName={"test"} title={"Software Developer"}/>
+          <div className="resumeContent">
+            <ResumeDetails description={"What is your name buddy ?"} experience={this.state.experience} education={this.state.education}></ResumeDetails>
+            <ResumePersonalDetails></ResumePersonalDetails>
+          </div>
         </div>
       </div>
     );

@@ -15,6 +15,7 @@ export class Experience extends Component {
 
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
+    console.log(e.target.name)
     console.log(e.target.value);
   };
   addExperience = () => {
@@ -33,7 +34,7 @@ export class Experience extends Component {
           variant="outlined"
           fullWidth={true}
           placeholder="Position"
-          value={!this.state.position ? position : this.state.position}
+          value={!position ? this.state.position : position}
           inputProps={{ name: "position", onChange: this.onChange }}
           margin="normal"
         />
@@ -41,7 +42,7 @@ export class Experience extends Component {
           variant="outlined"
           fullWidth={true}
           placeholder="Company"
-          value={!this.state.company ? company : this.state.company}
+          value={!company ? this.state.company : company}
           inputProps={{ name: "company", onChange: this.onChange }}
           margin="normal"
         />
@@ -49,7 +50,7 @@ export class Experience extends Component {
           variant="outlined"
           fullWidth={true}
           placeholder="City"
-          value={this.state.city ? city : this.state.city}
+          value={!city ? this.state.city : city}
           inputProps={{ name: "city", onChange: this.onChange }}
           margin="normal"
         />
@@ -58,7 +59,7 @@ export class Experience extends Component {
           variant="outlined"
           fullWidth={true}
           placeholder="From"
-          value={this.state.from ? from : this.state.from}
+          value={!from ? this.state.from : from}
           inputProps={{ name: "from", onChange: this.onChange }}
           margin="normal"
         />
@@ -66,7 +67,7 @@ export class Experience extends Component {
           variant="outlined"
           fullWidth={true}
           placeholder="To"
-          value={this.state.to ? to : this.state.to}
+          value={!to ? this.state.to : to}
           inputProps={{ name: "to", onChange: this.onChange }}
           margin="normal"
         />
