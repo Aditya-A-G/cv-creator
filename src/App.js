@@ -39,6 +39,8 @@ class App extends Component {
 
   deleteExperience = (index) => {
     const experience = this.state.experience;
+    console.log(index)
+
     experience.splice(index, 1);
     this.setState({ experience });
   };
@@ -71,8 +73,9 @@ class App extends Component {
             <Experience addExperience={this.addExperience} />
             </div>
             {this.state.experience.map((experience, index) => {
+              console.log(index)
               return (
-                <Experience key={index} position ={experience.position} company={experience.company} city={experience.city} from = {experience.from} to ={experience.to} deleteExperience={this.deleteExperience} displayDeleteBtn={true}/>
+                <Experience key={index} experienceKey={index} position ={experience.position} company={experience.company} city={experience.city} from = {experience.from} to ={experience.to} deleteExperience={this.deleteExperience} displayDeleteBtn={true}/>
               )
             })}
             <div>

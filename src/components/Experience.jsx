@@ -14,14 +14,13 @@ export class Experience extends Component {
   }
 
   onChange = (e) => {
-    if(this.props.displayDeleteBtn){
+    if (this.props.displayDeleteBtn) {
       //do nothing
-      console.log(e.target.name)
-    console.log(e.target.value);
-    }else{
-
+      console.log(e.target.name);
+      console.log(e.target.value);
+    } else {
       this.setState({ [e.target.name]: e.target.value });
-      console.log(e.target.name)
+      console.log(e.target.name);
       console.log(e.target.value);
     }
   };
@@ -30,7 +29,7 @@ export class Experience extends Component {
     this.props.addExperience(this.state);
   };
   deleteExperience = () => {
-    this.props.deleteExperience(this.props.key);
+    this.props.deleteExperience(this.props.experienceKey);
   };
 
   render() {
@@ -79,15 +78,26 @@ export class Experience extends Component {
           margin="normal"
         />
         {this.props.displayDeleteBtn ? (
-          <Button
-            variant="contained"
-            fullWidth={true}
-            size="large"
-            style={{ margin: ".6em 0 2.4em 0" }}
-            onClick={this.props.deleteExperience}
-          >
-            Delete
-          </Button>
+          <>
+            <Button
+              variant="contained"
+              fullWidth={true}
+              size="large"
+              style={{ margin: ".6em 0 .4em 0" }}
+              // onClick={this.props.deleteExperience}
+            >
+              Edit
+            </Button>
+            <Button
+              variant="contained"
+              fullWidth={true}
+              size="large"
+              style={{ margin: ".6em 0 2.4em 0" }}
+              onClick={this.deleteExperience}
+            >
+              Delete
+            </Button>
+          </>
         ) : (
           <Button
             variant="contained"
