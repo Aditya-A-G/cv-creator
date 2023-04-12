@@ -5,6 +5,7 @@ import Experience from "./components/Experience";
 import Education from "./components/Education";
 import { Typography } from "@mui/material";
 import "./App.css";
+import ResumeHeader from "./components/ResumeHeader";
 
 class App extends Component {
   constructor() {
@@ -71,6 +72,9 @@ class App extends Component {
             <Education addEducation={this.addEducation} />
             </div>
           </div>
+        </div>
+        <div className="resumeContainer">
+          <ResumeHeader firstName= {"test"} lastName={"test"} title={"Software Developer"}/>
         </div>
       </div>
     );

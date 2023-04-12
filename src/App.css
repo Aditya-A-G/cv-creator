@@ -5,20 +5,17 @@
     width: 100%;
     row-gap: 3.2em;
 }
-.formContainer{
+.formContainer, .resumeContainer{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     width: 70%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     border-radius: 0.5em;
+    border: 1px solid red;
 }
 
 .formWrapper{
     display: flex;
     flex-direction: column;
-    /* row-gap: 2em; */
-    width: 95%;
     padding: 1.5em;
 }
