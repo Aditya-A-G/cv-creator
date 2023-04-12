@@ -17,13 +17,26 @@ export class PersonalInfo extends Component {
   }
 
   onChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
-    this.props.handlePersonalInfo(this.state);
+    const { name, value, type } = e.target;
+
+    if (type === "file") {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        this.setState({ [name]: event.target.result }, () => {
+          this.props.handlePersonalInfo(this.state);
+        });
+      };
+      reader.readAsDataURL(e.target.files[0]);
+    } else {
+      this.setState({ [name]: value }, () => {
+        this.props.handlePersonalInfo(this.state);
+      });
+    }
   };
+
   render() {
     return (
       <div>
-
         <TextField
           variant="outlined"
           fullWidth={true}
@@ -54,7 +67,6 @@ export class PersonalInfo extends Component {
           placeholder="Photo"
           type="file"
           accept="image/*"
-          value={this.state.photo}
           inputProps={{ name: "photo", onChange: this.onChange }}
           margin="normal"
         />

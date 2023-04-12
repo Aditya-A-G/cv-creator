@@ -1,20 +1,25 @@
 import React, { Component } from "react";
 import { Divider, Typography } from "@mui/material";
 import "../ResumeDetails.css";
+
 export class ResumeDetails extends Component {
   render() {
     return (
       <div className="resumeDetailsContainer">
         <div className="resumeDetailsWrapper">
-          <div className="descriptionSection">
-            <Typography variant="h5" color={"primary"}>
-              Description
-            </Typography>
-            <Divider />
-            <Typography variant="body1" className="resumeDetailsDescription">
-              {this.props.description}
-            </Typography>
-          </div>
+          {this.props.description && (
+            <div className="descriptionSection">
+              <Typography variant="h5" color={"primary"}>
+                Description
+              </Typography>
+              <Divider />
+              <Typography variant="body1" className="resumeDetailsDescription">
+                {!this.props.description
+                  ? "[Description]"
+                  : this.props.description}
+              </Typography>
+            </div>
+          )}
           {this.props.experience.length > 0 && (
             <div className="experienceSection">
               <Typography variant="h5" color={"primary"}>
@@ -46,7 +51,7 @@ export class ResumeDetails extends Component {
                 })}
               </div>
             </div>
-           )}
+          )}
           {this.props.education.length > 0 && (
             <div className="educationSection">
               <Typography variant="h5" color={"primary"}>
@@ -82,7 +87,7 @@ export class ResumeDetails extends Component {
                 })}
               </div>
             </div>
-          )} 
+          )}
         </div>
       </div>
     );

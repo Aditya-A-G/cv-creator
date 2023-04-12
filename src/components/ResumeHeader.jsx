@@ -8,9 +8,9 @@ export class ResumeHeader extends Component {
     return (
       <div className='resumeHeader'>
         <Typography variant='h2'>
-            {this.props.firstName} {" "} {this.props.lastName}
+            {!this.props.firstName ? "[First Name]" : this.props.firstName} {" "} {!this.props.lastName ? "[Last Name]" : this.props.lastName}
         </Typography>
-        <p>{this.props.title}</p>
+        <p>{!this.props.title ? "[Title]" : this.props.title}</p>
       </div>
     )
   }

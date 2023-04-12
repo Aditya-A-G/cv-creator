@@ -14,9 +14,16 @@ export class Experience extends Component {
   }
 
   onChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
-    console.log(e.target.name)
+    if(this.props.displayDeleteBtn){
+      //do nothing
+      console.log(e.target.name)
     console.log(e.target.value);
+    }else{
+
+      this.setState({ [e.target.name]: e.target.value });
+      console.log(e.target.name)
+      console.log(e.target.value);
+    }
   };
   addExperience = () => {
     console.log(this.state);

@@ -1,0 +1,25 @@
+.resumePersonalDetailsContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: lightgray;
+}
+.resumePersonalDetailsWrapper{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    row-gap: 1em;
+    padding-top: 1em;
+}
+
+.profileImage{
+    display: flex;
+    justify-content: center;
+}
+
+.personalDetails{
+    display: flex;
+    flex-direction: column;
+    row-gap: 1em;
+}

@@ -70,6 +70,11 @@ class App extends Component {
             <Typography variant="h5">Experience</Typography>
             <Experience addExperience={this.addExperience} />
             </div>
+            {this.state.experience.map((experience, index) => {
+              return (
+                <Experience key={index} position ={experience.position} company={experience.company} city={experience.city} from = {experience.from} to ={experience.to} deleteExperience={this.deleteExperience} displayDeleteBtn={true}/>
+              )
+            })}
             <div>
             <Typography variant="h5">Education</Typography>
             <Education addEducation={this.addEducation} />
@@ -77,10 +82,10 @@ class App extends Component {
           </div>
         </div>
         <div className="resumeContainer">
-          <ResumeHeader firstName= {"test"} lastName={"test"} title={"Software Developer"}/>
+          <ResumeHeader firstName= {this.state.firstName} lastName={this.state.lastName} title={this.state.title}/>
           <div className="resumeContent">
-            <ResumeDetails description={"What is your name buddy ?"} experience={this.state.experience} education={this.state.education}></ResumeDetails>
-            <ResumePersonalDetails></ResumePersonalDetails>
+            <ResumeDetails description={this.state.description} experience={this.state.experience} education={this.state.education}></ResumeDetails>
+            <ResumePersonalDetails address={this.state.address} phone={this.state.phone} email={this.state.email} photo={this.state.photo}></ResumePersonalDetails>
           </div>
         </div>
       </div>
