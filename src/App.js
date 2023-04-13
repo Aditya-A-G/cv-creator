@@ -36,7 +36,6 @@ class App extends Component {
     this.setState({
       experience: [...this.state.experience, state],
     });
-    console.log(this.state.experience);
   };
 
   updateExperience = (state, index) => {
@@ -46,7 +45,6 @@ class App extends Component {
   };
   deleteExperience = (index) => {
     const experience = this.state.experience;
-    console.log(index);
 
     experience.splice(index, 1);
     this.setState({ experience });
@@ -56,7 +54,6 @@ class App extends Component {
     this.setState({
       education: [...this.state.education, state],
     });
-    console.log(this.state.education);
   };
   updateEducation = (state, index) => {
     const education = this.state.education;
@@ -70,19 +67,15 @@ class App extends Component {
   };
 
   createPDF = () => {
-    // Get the HTML element you want to create a PDF of
     const element = document.querySelector(".resumeContainer");
     const pdfWidth = element.offsetWidth;
     const pdfHeight = element.offsetHeight;
     const pdf = new jsPDF("p", "pt", [pdfWidth, pdfHeight]);
   
-    // Use html2canvas to render the element as an image.
     html2canvas(element).then((canvas) => {
-      // Add the image to the PDF document.
       const imgData = canvas.toDataURL("image/png");
       pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
   
-      // Save the PDF document.
       pdf.save("document.pdf");
     });
   };
@@ -102,7 +95,6 @@ class App extends Component {
               <Experience addExperience={this.addExperience} />
             </div>
             {this.state.experience.map((experience, index) => {
-              console.log(index);
               return (
                 <Experience
                   key={index}
@@ -123,7 +115,6 @@ class App extends Component {
               <Education addEducation={this.addEducation} />
             </div>
             {this.state.education.map((education, index) => {
-              console.log(index);
               return (
                 <Education
                   key={index}

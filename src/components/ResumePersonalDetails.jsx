@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Avatar, Divider, Typography } from "@mui/material";
-// import profileImg from "../profile.jpeg";
 import "../ResumePersonalDetails.css";
 
 export class ResumePersonalDetails extends Component {

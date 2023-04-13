@@ -44,7 +44,6 @@ export class ResumeDetails extends Component {
                         <Typography variant="body1">
                           {exp.company + ", " + exp.city}
                         </Typography>
-                        {/* <Typography variant='body1'>{exp.city}</Typography> */}
                       </div>
                     </div>
                   );

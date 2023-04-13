@@ -29,8 +29,6 @@ export class Experience extends Component {
   onChange = (e) => {
     if (this.state.helperState.displayDeleteBtn) {
       //do nothing
-      console.log(e.target.name);
-      console.log(e.target.value);
     } else {
       this.setState({
         experience: {
@@ -38,13 +36,9 @@ export class Experience extends Component {
           [e.target.name]: e.target.value,
         },
       });
-      console.log(e.target.name);
-      console.log(e.target.value);
-      console.log(this.state.experience);
     }
   };
   addExperience = () => {
-    console.log(this.state.experience);
     this.props.addExperience(this.state.experience);
   };
   deleteExperience = () => {
@@ -72,7 +66,6 @@ export class Experience extends Component {
     });
   };
   updateExperience = () => {
-    console.log(this.state.experience);
     this.setState({
       helperState: {
         editExperience: false,

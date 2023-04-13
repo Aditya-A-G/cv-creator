@@ -31,17 +31,13 @@ export class Education extends Component {
   onChange = (e) => {
     if (this.state.helperState.displayDeleteBtn) {
       //do nothing
-      console.log(e.target.name);
-      console.log(e.target.value);
     } else {
       this.setState({
         education: { ...this.state.education, [e.target.name]: e.target.value },
       });
-      console.log(e.target.value);
     }
   };
   addEducation = () => {
-    console.log(this.state.education);
     this.props.addEducation(this.state.education);
   };
   deleteEducation = () => {
@@ -72,7 +68,6 @@ export class Education extends Component {
   };
 
   updateEducation = () => {
-    console.log(this.state.education);
     this.setState({
       helperState: {
         editEducation: false,
