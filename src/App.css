@@ -5,7 +5,7 @@
     width: 100%;
     row-gap: 3.2em;
 }
-.formContainer, .resumeContainer{
+.formContainer, .resumeContainer, .optionsContainer{
     display: flex;
     flex-direction: column;
     width: 70%;
@@ -22,4 +22,14 @@
 .resumeContent{
     display: grid;
     grid-template-columns: 2fr 1fr;
+    background-color: white;
+    min-height: 842px;
+    min-width: 595px;
 }
+
+.optionsContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5em;
+  }
+  
