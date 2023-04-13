@@ -56,7 +56,11 @@ class App extends Component {
     });
     console.log(this.state.education);
   };
-
+  updateEducation = (state, index) => {
+    const education = this.state.education;
+    education[index] = state;
+    this.setState({ education });
+  };
   deleteEducation = (index) => {
     const education = this.state.education;
     education.splice(index, 1);
@@ -87,6 +91,12 @@ class App extends Component {
             <Typography variant="h5">Education</Typography>
             <Education addEducation={this.addEducation} />
             </div>
+            {this.state.education.map((education, index) => {
+              console.log(index)
+              return (
+                <Education key={index} educationKey={index} university ={education.university} city={education.city} degree={education.degree} subject={education.subject} from = {education.from} to ={education.to} deleteEducation={this.deleteEducation} updateEducation={this.updateEducation} displayDeleteBtn={true}/>
+              )
+            })}
           </div>
         </div>
         <div className="resumeContainer">
