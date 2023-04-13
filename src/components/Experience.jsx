@@ -5,42 +5,97 @@ export class Experience extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      position: "",
-      company: "",
-      city: "",
-      from: "",
-      to: "",
+      experience: {
+        position: "",
+        company: "",
+        city: "",
+        from: "",
+        to: "",
+      },
+      helperState: {
+        position: !this.props.position ? "" : this.props.position,
+        company: !this.props.company ? "" : this.props.company,
+        city: !this.props.city ? "" : this.props.city,
+        from: !this.props.from ? "" : this.props.from,
+        to: !this.props.to ? "" : this.props.to,
+        displayDeleteBtn: !this.props.displayDeleteBtn
+          ? false
+          : this.props.displayDeleteBtn,
+        editExperience: false,
+      },
     };
   }
 
   onChange = (e) => {
-    if (this.props.displayDeleteBtn) {
+    if (this.state.helperState.displayDeleteBtn) {
       //do nothing
       console.log(e.target.name);
       console.log(e.target.value);
     } else {
-      this.setState({ [e.target.name]: e.target.value });
+      this.setState({
+        experience: {
+          ...this.state.experience,
+          [e.target.name]: e.target.value,
+        },
+      });
       console.log(e.target.name);
       console.log(e.target.value);
+      console.log(this.state.experience);
     }
   };
   addExperience = () => {
-    console.log(this.state);
-    this.props.addExperience(this.state);
+    console.log(this.state.experience);
+    this.props.addExperience(this.state.experience);
   };
   deleteExperience = () => {
     this.props.deleteExperience(this.props.experienceKey);
   };
 
+  handleEdit = () => {
+    this.setState({
+      experience: {
+        position: this.props.position,
+        company: this.props.company,
+        city: this.props.city,
+        from: this.props.from,
+        to: this.props.to,
+      },
+      helperState: {
+        position: "",
+        company: "",
+        city: "",
+        from: "",
+        to: "",
+        editExperience: true,
+        displayDeleteBtn: false,
+      },
+    });
+  };
+  updateExperience = () => {
+    console.log(this.state.experience);
+    this.setState({
+      helperState: {
+        editExperience: false,
+        displayDeleteBtn: true,
+      },
+    });
+    this.props.updateExperience(
+      this.state.experience,
+      this.props.experienceKey
+    );
+  };
   render() {
-    const { position, company, city, from, to } = this.props;
     return (
       <div>
         <TextField
           variant="outlined"
           fullWidth={true}
           placeholder="Position"
-          value={!position ? this.state.position : position}
+          value={
+            !this.state.helperState.position
+              ? this.state.experience.position
+              : this.state.helperState.position
+          }
           inputProps={{ name: "position", onChange: this.onChange }}
           margin="normal"
         />
@@ -48,7 +103,11 @@ export class Experience extends Component {
           variant="outlined"
           fullWidth={true}
           placeholder="Company"
-          value={!company ? this.state.company : company}
+          value={
+            !this.state.helperState.company
+              ? this.state.experience.company
+              : this.state.helperState.company
+          }
           inputProps={{ name: "company", onChange: this.onChange }}
           margin="normal"
         />
@@ -56,7 +115,11 @@ export class Experience extends Component {
           variant="outlined"
           fullWidth={true}
           placeholder="City"
-          value={!city ? this.state.city : city}
+          value={
+            !this.state.helperState.city
+              ? this.state.experience.city
+              : this.state.helperState.city
+          }
           inputProps={{ name: "city", onChange: this.onChange }}
           margin="normal"
         />
@@ -65,7 +128,11 @@ export class Experience extends Component {
           variant="outlined"
           fullWidth={true}
           placeholder="From"
-          value={!from ? this.state.from : from}
+          value={
+            !this.state.helperState.from
+              ? this.state.experience.from
+              : this.state.helperState.from
+          }
           inputProps={{ name: "from", onChange: this.onChange }}
           margin="normal"
         />
@@ -73,21 +140,37 @@ export class Experience extends Component {
           variant="outlined"
           fullWidth={true}
           placeholder="To"
-          value={!to ? this.state.to : to}
+          value={
+            !this.state.helperState.to
+              ? this.state.experience.to
+              : this.state.helperState.to
+          }
           inputProps={{ name: "to", onChange: this.onChange }}
           margin="normal"
         />
         {this.props.displayDeleteBtn ? (
           <>
-            <Button
-              variant="contained"
-              fullWidth={true}
-              size="large"
-              style={{ margin: ".6em 0 .4em 0" }}
-              // onClick={this.props.deleteExperience}
-            >
-              Edit
-            </Button>
+            {this.state.helperState.editExperience ? (
+              <Button
+                variant="contained"
+                fullWidth={true}
+                size="large"
+                style={{ margin: ".6em 0 .4em 0" }}
+                onClick={this.updateExperience}
+              >
+                Update
+              </Button>
+            ) : (
+              <Button
+                variant="contained"
+                fullWidth={true}
+                size="large"
+                style={{ margin: ".6em 0 .4em 0" }}
+                onClick={this.handleEdit}
+              >
+                Edit
+              </Button>
+            )}
             <Button
               variant="contained"
               fullWidth={true}
